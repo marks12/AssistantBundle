@@ -4,6 +4,33 @@ namespace Belcoder\AssistantBundle\Handler;
 
 class MappingHandler
 {
+    public static function writeMarker($file_entity)
+    {
+        $content = file_get_contents($file_entity);
+        if (preg_match('!    // \*!Ui', $content)) {
+            return;
+        }
+
+        $content_line = file($file_entity);
+
+        $start_line_annotation = null;
+
+        foreach ($content_line as $line => $item) {
+            if (trim($item) == '/**') {
+                $start_line_annotation = $line;
+            }
+
+            if ($start_line_annotation && preg_match('!public function!Ui', $item)) {
+                //
+                $content_line[$start_line_annotation] = "\n" . '    // *' . "\n\n" . $content_line[$start_line_annotation];
+
+                $content = implode('', $content_line);
+                file_put_contents($file_entity, $content);
+                break;
+            }
+        }
+    }
+
     public static function createChanges($mapping, $first_entity, $second_entity, $first_field, $second_field)
     {
         $first_changes = [];
@@ -90,7 +117,12 @@ class MappingHandler
                 if (count($first_changes) - 1 == $key) {
                     $first_changes_str .= '     */' . "\n";
                 }
-                $first_changes_str .= '    ' . $change . "\n";
+
+                if (!isset($first_changes[$key + 1])) {
+                    $first_changes_str .= '    ' . $change;
+                } else {
+                    $first_changes_str .= '    ' . $change . "\n";
+                }
             }
         }
 
@@ -99,10 +131,19 @@ class MappingHandler
         if ($second_changes) {
             $second_changes_str .= '    /**' . "\n";
             foreach ($second_changes as $key => $change) {
+                if (!trim($change)) {
+                    continue;
+                }
+
                 if (count($second_changes) - 1 == $key) {
                     $second_changes_str .= '     */' . "\n";
                 }
-                $second_changes_str .= '    ' . $change . "\n";
+
+                if (!isset($second_changes[$key + 1])) {
+                    $second_changes_str .= '    ' . $change;
+                } else {
+                    $second_changes_str .= '    ' . $change . "\n";
+                }
             }
         }
 

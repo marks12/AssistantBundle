@@ -125,6 +125,7 @@ class MainCommand extends ContainerAwareCommand
             echo $changes[0];
 
             echo PHP_EOL;
+            echo PHP_EOL;
         }
 
         if ($changes[1]) {
@@ -134,6 +135,7 @@ class MainCommand extends ContainerAwareCommand
             echo $changes[1];
 
             echo PHP_EOL;
+            echo PHP_EOL;
         }
 
         readline('Нажмите Enter для продолжения');
@@ -141,6 +143,7 @@ class MainCommand extends ContainerAwareCommand
         try {
             if ($changes[0]) {
                 $file_entity_first = $this->path_entities . $first_entity['value'] . '.php';
+                MappingHandler::writeMarker($file_entity_first);
                 $content_file_entity_first = file_get_contents($file_entity_first);
                 $content_file_entity_first = str_replace('// *', '// *' . "\n\n" . $changes[0], $content_file_entity_first);
                 file_put_contents($file_entity_first, $content_file_entity_first);
@@ -148,8 +151,9 @@ class MainCommand extends ContainerAwareCommand
 
             if ($changes[1]) {
                 $file_entity_second = $this->path_entities . $second_entity['value'] . '.php';
+                MappingHandler::writeMarker($file_entity_second);
                 $content_file_entity_second = file_get_contents($file_entity_second);
-                $content_file_entity_second = str_replace('// *', '// *' . "\n\n" . $changes[0], $content_file_entity_second);
+                $content_file_entity_second = str_replace('// *', '// *' . "\n\n" . $changes[1], $content_file_entity_second);
                 file_put_contents($file_entity_second, $content_file_entity_second);
             }
         } catch (\Exception $e) {
