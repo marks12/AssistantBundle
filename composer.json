@@ -1,0 +1,23 @@
+{
+    "name": "belcoder/assistant_bundle",
+    "description": "Symfony assistant bundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Belcoder",
+            "email": "belcoderphp@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-0": {
+            "Belcoder\\GDAM": "src/"
+        }
+    },
+    "extra" : {
+        "branch-alias" : {
+            "dev-master" : "0.1"
+        }
+    }
+}
