@@ -50,8 +50,8 @@ class MappingHandler
             case 'One-To-Many, Unidirectional with Join Table':
                 $first_changes[] = ' * @ORM\ManyToMany(targetEntity="' . $second_entity . '")';
                 $first_changes[] = ' * @ORM\JoinTable(name="' . strtolower($first_entity) . 's_' . strtolower($second_entity) . 's",';
-                $first_changes[] = ' *     joinColumns={@JoinColumn(name="' . strtolower($first_entity) . '_id", referencedColumnName="id")},';
-                $first_changes[] = ' *     inverseJoinColumns={@JoinColumn(name="' . strtolower($second_entity) . '_id", referencedColumnName="id", unique=true)}';
+                $first_changes[] = ' *     joinColumns={@ORM\JoinColumn(name="' . strtolower($first_entity) . '_id", referencedColumnName="id")},';
+                $first_changes[] = ' *     inverseJoinColumns={@ORM\JoinColumn(name="' . strtolower($second_entity) . '_id", referencedColumnName="id", unique=true)}';
                 $first_changes[] = ' * )';
                 $first_changes[] = 'private $' . $first_field_ucf . ';';
                 break;
@@ -67,8 +67,8 @@ class MappingHandler
             case 'Many-to-Many, Unidirectional':
                 $first_changes[] = ' * @ORM\ManyToMany(targetEntity="' . $second_entity . '")';
                 $first_changes[] = ' * @ORM\JoinTable(name="' . strtolower($first_entity) . 's_' . strtolower($second_entity) . 's",';
-                $first_changes[] = ' *     joinColumns={@JoinColumn(name="' . strtolower($first_entity) . '_id", referencedColumnName="id")},';
-                $first_changes[] = ' *     inverseJoinColumns={@JoinColumn(name="' . strtolower($second_entity) . '_id", referencedColumnName="id")}';
+                $first_changes[] = ' *     joinColumns={@ORM\JoinColumn(name="' . strtolower($first_entity) . '_id", referencedColumnName="id")},';
+                $first_changes[] = ' *     inverseJoinColumns={@ORM\JoinColumn(name="' . strtolower($second_entity) . '_id", referencedColumnName="id")}';
                 $first_changes[] = ' * )';
                 $first_changes[] = 'private $' . $first_field_ucf . ';';
                 break;
