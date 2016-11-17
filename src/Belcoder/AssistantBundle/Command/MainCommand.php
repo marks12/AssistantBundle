@@ -239,11 +239,6 @@ class MainCommand extends ContainerAwareCommand
 
         echo PHP_EOL;
         echo $this->colorize('Успешно!', 'GREEN') . PHP_EOL;
-        echo PHP_EOL;
-        echo $this->colorize(' ! ', 'CYAN') .
-            ' Теперь нужно внести изменения в БД, запусти следующие команды:' . PHP_EOL;
-        echo '    - bin/console doctrine:migrations:diff' . PHP_EOL;
-        echo '    - bin/console doctrine:migrations:migrate' . PHP_EOL;
     }
 
     private function queryAfterInstallation()

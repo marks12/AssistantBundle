@@ -13,7 +13,7 @@ class CRUDHandler
     prefix:   /' .
         '';
 
-        $body = str_replace('{{Entity}}', ucfirst(strtolower($entity)), $body);
+        $body = str_replace('{{Entity}}', $entity, $body);
         $body = str_replace('{{entity}}', strtolower($entity), $body);
 
         return $body;
