@@ -173,7 +173,7 @@ class {{Entity}}RESTController extends FOSRestController
 }' .
         '';
 
-        $body = str_replace('{{Entity}}', ucfirst(strtolower($entity)), $body);
+        $body = str_replace('{{Entity}}', $entity, $body);
         $body = str_replace('{{entity}}', strtolower($entity), $body);
 
         return $body;
@@ -282,7 +282,7 @@ class {{Entity}}Repository extends \Doctrine\ORM\EntityRepository
 }' .
             '';
 
-        $body = str_replace('{{Entity}}', ucfirst(strtolower($entity)), $body);
+        $body = str_replace('{{Entity}}', $entity, $body);
         $body = str_replace('{{entity}}', strtolower($entity), $body);
 
         return $body;
