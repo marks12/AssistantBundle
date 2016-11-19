@@ -5,14 +5,13 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Belcoder",
-            "email": "belcoderphp@gmail.com"
-        },
-        {
             "name": "Marks12",
             "email": "tsv@serveon.ru"
+        },
+        {
+            "name": "Belcoder",
+            "email": "belcoderphp@gmail.com"
         }
-
     ],
     "require": {},
     "autoload": {
