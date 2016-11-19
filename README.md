@@ -15,6 +15,16 @@ Symfony AssistantBundle helps configure new application and add 9 types of assoc
 
 ``composer require marks12/assistantbundle``
 
+### Add to modules list
+
+```php
+        if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
+            ...            
+            $bundles[] = new Marks12\AssistantBundle\Marks12AssistantBundle();
+            ...            
+        }
+```
+
 # Using
 
 ``bin/console`` 
