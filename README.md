@@ -1,0 +1,2 @@
+# AssistantBundle
+Symfony AssistantBundle
