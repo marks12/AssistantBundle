@@ -1,5 +1,6 @@
 # About
 Symfony AssistantBundle helps configure new application and add 9 types of associations:
+
 1. Many-To-One, Unidirectional,
 1. One-To-One, Unidirectional,
 1. One-To-One, Bidirectional,
