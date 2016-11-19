@@ -1,5 +1,5 @@
 {
-    "name": "belcoder/assistantbundle",
+    "name": "marks12/assistantbundle",
     "description": "Symfony assistant bundle",
     "type": "symfony-bundle",
     "license": "MIT",
@@ -7,12 +7,17 @@
         {
             "name": "Belcoder",
             "email": "belcoderphp@gmail.com"
+        },
+        {
+            "name": "Tsv",
+            "email": "tsv@serveon.ru"
         }
+
     ],
     "require": {},
     "autoload": {
         "psr-0": {
-            "Belcoder\\AssistantBundle": "src/"
+            "Marks12\\AssistantBundle": "src/"
         }
     },
     "extra" : {
