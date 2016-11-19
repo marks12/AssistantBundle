@@ -1,12 +1,12 @@
 <?php
 
-namespace Belcoder\AssistantBundle\Command;
+namespace Marks12\AssistantBundle\Command;
 
-use Belcoder\AssistantBundle\Handler\AppKernelHandler;
-use Belcoder\AssistantBundle\Handler\ComposerRequireHandler;
-use Belcoder\AssistantBundle\Handler\ConfigHandler;
-use Belcoder\AssistantBundle\Handler\CRUDHandler;
-use Belcoder\AssistantBundle\Handler\MappingHandler;
+use Marks12\AssistantBundle\Handler\AppKernelHandler;
+use Marks12\AssistantBundle\Handler\ComposerRequireHandler;
+use Marks12\AssistantBundle\Handler\ConfigHandler;
+use Marks12\AssistantBundle\Handler\CRUDHandler;
+use Marks12\AssistantBundle\Handler\MappingHandler;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
@@ -23,7 +23,7 @@ class MainCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('belcoder:assistant')
+            ->setName('marks12:assistant')
             ->setDescription('...')
             ->setHelp("...");
     }

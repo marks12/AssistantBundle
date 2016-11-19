@@ -1,6 +1,6 @@
 <?php
 
-namespace Belcoder\AssistantBundle\Handler;
+namespace Marks12\AssistantBundle\Handler;
 
 class ConfigHandler
 {
