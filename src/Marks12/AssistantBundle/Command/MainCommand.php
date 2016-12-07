@@ -58,7 +58,7 @@ class MainCommand extends ContainerAwareCommand
 
                 echo PHP_EOL;
 
-                readline('Нажмите Enter для продолжения');
+                $this->readline('Нажмите Enter для продолжения');
                 $this->queryAfterInstallation();
                 break;
 
@@ -68,7 +68,7 @@ class MainCommand extends ContainerAwareCommand
 
                 echo PHP_EOL;
 
-                readline('Нажмите Enter для продолжения');
+                $this->readline('Нажмите Enter для продолжения');
                 $this->generateCRUD();
                 break;
 
@@ -78,7 +78,7 @@ class MainCommand extends ContainerAwareCommand
 
                 echo PHP_EOL;
 
-                readline('Нажмите Enter для продолжения');
+                $this->readline('Нажмите Enter для продолжения');
                 $this->generateAssociationMappings();
                 break;
 
@@ -93,9 +93,9 @@ class MainCommand extends ContainerAwareCommand
     private function generateAssociationMappings()
     {
         $first_entity = $this->query('Какая сущность будет первая?', $this->getEntity());
-        $first_field = readline('Новое поле: ');
+        $first_field = $this->readline('Новое поле: ');
         $second_entity = $this->query('Какая сущность будет вторая?', $this->getEntity());
-        $second_field = readline('Новое поле: ');
+        $second_field = $this->readline('Новое поле: ');
 
         $mapping = $this->query('Как будем делать связь?', [
             1 => 'Many-To-One, Unidirectional',
@@ -138,7 +138,7 @@ class MainCommand extends ContainerAwareCommand
             echo PHP_EOL;
         }
 
-        readline('Нажмите Enter для продолжения');
+        $this->readline('Нажмите Enter для продолжения');
 
         try {
             if ($changes[0]) {
@@ -195,6 +195,18 @@ class MainCommand extends ContainerAwareCommand
         return $b;
     }
 
+    private function readline() {
+
+        if (PHP_OS == 'WINNT') {
+            echo '$ ';
+            $line = stream_get_line(STDIN, 1024, PHP_EOL);
+        } else {
+            $line = readline('$ ');
+        }
+
+        return $line;
+    }
+
     /**
      * @throws \Exception
      */
@@ -227,7 +239,7 @@ class MainCommand extends ContainerAwareCommand
 
         echo PHP_EOL;
 
-        readline('Нажмите Enter для продолжения');
+        $this->readline('Нажмите Enter для продолжения');
 
         try {
             file_put_contents($path_controller, $controller);
@@ -263,7 +275,7 @@ class MainCommand extends ContainerAwareCommand
 
         echo PHP_EOL;
 
-        readline('Нажмите Enter для продолжения');
+        $this->readline('Нажмите Enter для продолжения');
 
         try {
             file_put_contents($this->path_kernel, AppKernelHandler::getBody());
@@ -287,7 +299,7 @@ class MainCommand extends ContainerAwareCommand
 
         echo PHP_EOL;
 
-        readline('Нажмите Enter для продолжения');
+        $this->readline('Нажмите Enter для продолжения');
 
         try {
             file_put_contents($this->path_config, ConfigHandler::getBody());
@@ -348,7 +360,7 @@ class MainCommand extends ContainerAwareCommand
 
         echo PHP_EOL;
 
-        readline('Нажмите Enter для продолжения');
+        $this->readline('Нажмите Enter для продолжения');
 
         if ($new_require) {
             $require = array_merge($require, $new_require);
@@ -393,7 +405,7 @@ class MainCommand extends ContainerAwareCommand
         }
 
         echo PHP_EOL;
-        $answer = readline('Ваш выбор: ');
+        $answer = $this->readline('Ваш выбор: ');
 
         if (!isset($options[$answer])) {
             echo $this->colorize('Попробуй еще раз', 'RED') . PHP_EOL;
