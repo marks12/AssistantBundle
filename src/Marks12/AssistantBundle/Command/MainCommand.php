@@ -195,13 +195,13 @@ class MainCommand extends ContainerAwareCommand
         return $b;
     }
 
-    private function readline() {
+    private function readline($text = '') {
 
         if (PHP_OS == 'WINNT') {
             echo '$ ';
             $line = stream_get_line(STDIN, 1024, PHP_EOL);
         } else {
-            $line = readline('$ ');
+            $line = readline($text);
         }
 
         return $line;
